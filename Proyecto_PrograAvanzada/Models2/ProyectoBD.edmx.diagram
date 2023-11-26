@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8bbbfd646e7f40b2a6ed3f23d47137cf" Name="Diagram1">
+        <EntityTypeShape EntityType="PROYECTO_PAModel.TAB_CATEGORIAS" Width="1.5" PointX="3.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROYECTO_PAModel.TAB_CURSOS" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROYECTO_PAModel.TAB_ESTADO" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROYECTO_PAModel.TAB_INGREDIENTES" Width="1.5" PointX="8.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROYECTO_PAModel.TAB_INSTRUCCIONES" Width="1.5" PointX="8.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROYECTO_PAModel.TAB_PROFESOR" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROYECTO_PAModel.TAB_RECETAS" Width="1.5" PointX="6" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROYECTO_PAModel.TAB_ROL" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROYECTO_PAModel.TAB_TAGS" Width="1.5" PointX="3.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROYECTO_PAModel.TAB_USER" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <AssociationConnector Association="PROYECTO_PAModel.FK__TAB_RECET__ID_CA__02FC7413" ManuallyRouted="false" />
+        <AssociationConnector Association="PROYECTO_PAModel.FK__TAB_CURSO__COD_R__10566F31" ManuallyRouted="false" />
+        <AssociationConnector Association="PROYECTO_PAModel.FK__TAB_CURSO__ID_ES__123EB7A3" ManuallyRouted="false" />
+        <AssociationConnector Association="PROYECTO_PAModel.FK__TAB_CURSO__ID_PR__0F624AF8" ManuallyRouted="false" />
+        <AssociationConnector Association="PROYECTO_PAModel.FK__TAB_CURSO__ID_US__114A936A" ManuallyRouted="false" />
+        <AssociationConnector Association="PROYECTO_PAModel.FK__TAB_RECET__ID_ES__04E4BC85" ManuallyRouted="false" />
+        <AssociationConnector Association="PROYECTO_PAModel.FK__TAB_USER__ID_EST__00200768" ManuallyRouted="false" />
+        <AssociationConnector Association="PROYECTO_PAModel.FK__TAB_INGRE__COD_R__0C85DE4D" ManuallyRouted="false" />
+        <AssociationConnector Association="PROYECTO_PAModel.FK__TAB_INSTR__COD_R__09A971A2" ManuallyRouted="false" />
+        <AssociationConnector Association="PROYECTO_PAModel.FK__TAB_PROFE__ID_RO__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="PROYECTO_PAModel.FK__TAB_RECET__ID_TA__03F0984C" ManuallyRouted="false" />
+        <AssociationConnector Association="PROYECTO_PAModel.FK__TAB_RECET__ID_US__05D8E0BE" ManuallyRouted="false" />
+        <AssociationConnector Association="PROYECTO_PAModel.FK__TAB_USER__ID_ROL__7F2BE32F" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
