@@ -1,0 +1,90 @@
+﻿@model ProyectoPrograAvanzada2023.Models2.TAB_RECETAS
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TAB_RECETAS</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOM_RECETA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOM_RECETA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DURACION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DURACION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PORCIONES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PORCIONES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_CREACION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_CREACION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_MODIFICACION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_MODIFICACION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TAB_CATEGORIAS.CATEGORIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TAB_CATEGORIAS.CATEGORIA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TAB_ESTADO.ESTADO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TAB_ESTADO.ESTADO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TAB_TAGS.TAGS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TAB_TAGS.TAGS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TAB_USER.NOMBRE_USER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TAB_USER.NOMBRE_USER)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.COD_RECETA }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,58 @@
+﻿@model ProyectoPrograAvanzada2023.Models2.TAB_USER
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TAB_USER</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRE_USER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE_USER)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PASSWORD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PASSWORD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_CONEXION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_CONEXION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TAB_ESTADO.ESTADO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TAB_ESTADO.ESTADO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TAB_ROL.ROL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TAB_ROL.ROL)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_USER }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

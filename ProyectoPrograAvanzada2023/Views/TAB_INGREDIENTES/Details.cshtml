@@ -1,0 +1,34 @@
+﻿@model ProyectoPrograAvanzada2023.Models2.TAB_INGREDIENTES
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TAB_INGREDIENTES</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.INGREDIENTES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.INGREDIENTES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TAB_RECETAS.NOM_RECETA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TAB_RECETAS.NOM_RECETA)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_INGREDIENTES }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_PROYECTO_PAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TAB_CATEGORIAS">
+    <Key>
+      <PropertyRef Name="ID_CATEGORIA" />
+    </Key>
+    <Property Name="ID_CATEGORIA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CATEGORIA" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="TAB_CURSOS">
+    <Key>
+      <PropertyRef Name="CODIGO" />
+    </Key>
+    <Property Name="CODIGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="255" />
+    <Property Name="ID_PROFESOR" Type="int" />
+    <Property Name="HORARIO" Type="varchar" MaxLength="255" />
+    <Property Name="FECHA_INICIO" Type="date" />
+    <Property Name="FECHA_FIN" Type="date" />
+    <Property Name="COD_RECETA" Type="int" />
+    <Property Name="ID_USER" Type="int" />
+    <Property Name="ID_ESTADO" Type="int" />
+  </EntityType>
+  <EntityType Name="TAB_ESTADO">
+    <Key>
+      <PropertyRef Name="ID_ESTADO" />
+    </Key>
+    <Property Name="ID_ESTADO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ESTADO" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="TAB_INGREDIENTES">
+    <Key>
+      <PropertyRef Name="ID_INGREDIENTES" />
+    </Key>
+    <Property Name="ID_INGREDIENTES" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="COD_RECETA" Type="int" />
+    <Property Name="INGREDIENTES" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="TAB_INSTRUCCIONES">
+    <Key>
+      <PropertyRef Name="ID_INSTRUCCIONES" />
+    </Key>
+    <Property Name="ID_INSTRUCCIONES" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="COD_RECETA" Type="int" />
+    <Property Name="INSTRUCCIONES" Type="text" />
+  </EntityType>
+  <EntityType Name="TAB_PROFESOR">
+    <Key>
+      <PropertyRef Name="ID_PROFESOR" />
+    </Key>
+    <Property Name="ID_PROFESOR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="255" />
+    <Property Name="APELLIDO_MAT" Type="varchar" MaxLength="255" />
+    <Property Name="APELLIDO_PAT" Type="varchar" MaxLength="255" />
+    <Property Name="CEDULA" Type="varchar" MaxLength="255" />
+    <Property Name="ID_ROL" Type="int" />
+  </EntityType>
+  <EntityType Name="TAB_RECETAS">
+    <Key>
+      <PropertyRef Name="COD_RECETA" />
+    </Key>
+    <Property Name="COD_RECETA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOM_RECETA" Type="varchar" MaxLength="255" />
+    <Property Name="ID_CATEGORIA" Type="int" />
+    <Property Name="DURACION" Type="varchar" MaxLength="255" />
+    <Property Name="PORCIONES" Type="varchar" MaxLength="255" />
+    <Property Name="ID_TAGS" Type="int" />
+    <Property Name="ID_ESTADO" Type="int" />
+    <Property Name="ID_USER" Type="int" />
+    <Property Name="FECHA_CREACION" Type="date" />
+    <Property Name="FECHA_MODIFICACION" Type="date" />
+  </EntityType>
+  <EntityType Name="TAB_ROL">
+    <Key>
+      <PropertyRef Name="ID_ROL" />
+    </Key>
+    <Property Name="ID_ROL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ROL" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="TAB_TAGS">
+    <Key>
+      <PropertyRef Name="ID_TAGS" />
+    </Key>
+    <Property Name="ID_TAGS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TAGS" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="TAB_USER">
+    <Key>
+      <PropertyRef Name="ID_USER" />
+    </Key>
+    <Property Name="ID_USER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE_USER" Type="varchar" MaxLength="255" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="255" />
+    <Property Name="ID_ROL" Type="int" />
+    <Property Name="FECHA_CONEXION" Type="date" />
+    <Property Name="ID_ESTADO" Type="int" />
+  </EntityType>
+  <Association Name="FK__TAB_CURSO__COD_R__5EBF139D">
+    <End Role="TAB_RECETAS" Type="Self.TAB_RECETAS" Multiplicity="0..1" />
+    <End Role="TAB_CURSOS" Type="Self.TAB_CURSOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_RECETAS">
+        <PropertyRef Name="COD_RECETA" />
+      </Principal>
+      <Dependent Role="TAB_CURSOS">
+        <PropertyRef Name="COD_RECETA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_CURSO__ID_ES__60A75C0F">
+    <End Role="TAB_ESTADO" Type="Self.TAB_ESTADO" Multiplicity="0..1" />
+    <End Role="TAB_CURSOS" Type="Self.TAB_CURSOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_ESTADO">
+        <PropertyRef Name="ID_ESTADO" />
+      </Principal>
+      <Dependent Role="TAB_CURSOS">
+        <PropertyRef Name="ID_ESTADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_CURSO__ID_PR__5DCAEF64">
+    <End Role="TAB_PROFESOR" Type="Self.TAB_PROFESOR" Multiplicity="0..1" />
+    <End Role="TAB_CURSOS" Type="Self.TAB_CURSOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_PROFESOR">
+        <PropertyRef Name="ID_PROFESOR" />
+      </Principal>
+      <Dependent Role="TAB_CURSOS">
+        <PropertyRef Name="ID_PROFESOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_CURSO__ID_US__5FB337D6">
+    <End Role="TAB_USER" Type="Self.TAB_USER" Multiplicity="0..1" />
+    <End Role="TAB_CURSOS" Type="Self.TAB_CURSOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_USER">
+        <PropertyRef Name="ID_USER" />
+      </Principal>
+      <Dependent Role="TAB_CURSOS">
+        <PropertyRef Name="ID_USER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_INGRE__COD_R__6383C8BA">
+    <End Role="TAB_RECETAS" Type="Self.TAB_RECETAS" Multiplicity="0..1" />
+    <End Role="TAB_INGREDIENTES" Type="Self.TAB_INGREDIENTES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_RECETAS">
+        <PropertyRef Name="COD_RECETA" />
+      </Principal>
+      <Dependent Role="TAB_INGREDIENTES">
+        <PropertyRef Name="COD_RECETA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_INSTR__COD_R__66603565">
+    <End Role="TAB_RECETAS" Type="Self.TAB_RECETAS" Multiplicity="0..1" />
+    <End Role="TAB_INSTRUCCIONES" Type="Self.TAB_INSTRUCCIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_RECETAS">
+        <PropertyRef Name="COD_RECETA" />
+      </Principal>
+      <Dependent Role="TAB_INSTRUCCIONES">
+        <PropertyRef Name="COD_RECETA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_PROFE__ID_RO__5165187F">
+    <End Role="TAB_ROL" Type="Self.TAB_ROL" Multiplicity="0..1" />
+    <End Role="TAB_PROFESOR" Type="Self.TAB_PROFESOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_ROL">
+        <PropertyRef Name="ID_ROL" />
+      </Principal>
+      <Dependent Role="TAB_PROFESOR">
+        <PropertyRef Name="ID_ROL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_RECET__ID_CA__5812160E">
+    <End Role="TAB_CATEGORIAS" Type="Self.TAB_CATEGORIAS" Multiplicity="0..1" />
+    <End Role="TAB_RECETAS" Type="Self.TAB_RECETAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_CATEGORIAS">
+        <PropertyRef Name="ID_CATEGORIA" />
+      </Principal>
+      <Dependent Role="TAB_RECETAS">
+        <PropertyRef Name="ID_CATEGORIA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_RECET__ID_ES__59FA5E80">
+    <End Role="TAB_ESTADO" Type="Self.TAB_ESTADO" Multiplicity="0..1" />
+    <End Role="TAB_RECETAS" Type="Self.TAB_RECETAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_ESTADO">
+        <PropertyRef Name="ID_ESTADO" />
+      </Principal>
+      <Dependent Role="TAB_RECETAS">
+        <PropertyRef Name="ID_ESTADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_RECET__ID_TA__59063A47">
+    <End Role="TAB_TAGS" Type="Self.TAB_TAGS" Multiplicity="0..1" />
+    <End Role="TAB_RECETAS" Type="Self.TAB_RECETAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_TAGS">
+        <PropertyRef Name="ID_TAGS" />
+      </Principal>
+      <Dependent Role="TAB_RECETAS">
+        <PropertyRef Name="ID_TAGS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_RECET__ID_US__5AEE82B9">
+    <End Role="TAB_USER" Type="Self.TAB_USER" Multiplicity="0..1" />
+    <End Role="TAB_RECETAS" Type="Self.TAB_RECETAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_USER">
+        <PropertyRef Name="ID_USER" />
+      </Principal>
+      <Dependent Role="TAB_RECETAS">
+        <PropertyRef Name="ID_USER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_USER__ID_EST__5535A963">
+    <End Role="TAB_ESTADO" Type="Self.TAB_ESTADO" Multiplicity="0..1" />
+    <End Role="TAB_USER" Type="Self.TAB_USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_ESTADO">
+        <PropertyRef Name="ID_ESTADO" />
+      </Principal>
+      <Dependent Role="TAB_USER">
+        <PropertyRef Name="ID_ESTADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAB_USER__ID_ROL__5441852A">
+    <End Role="TAB_ROL" Type="Self.TAB_ROL" Multiplicity="0..1" />
+    <End Role="TAB_USER" Type="Self.TAB_USER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAB_ROL">
+        <PropertyRef Name="ID_ROL" />
+      </Principal>
+      <Dependent Role="TAB_USER">
+        <PropertyRef Name="ID_ROL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_PROYECTO_PAModelStoreContainer">
+    <EntitySet Name="TAB_CATEGORIAS" EntityType="Self.TAB_CATEGORIAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TAB_CURSOS" EntityType="Self.TAB_CURSOS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TAB_ESTADO" EntityType="Self.TAB_ESTADO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TAB_INGREDIENTES" EntityType="Self.TAB_INGREDIENTES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TAB_INSTRUCCIONES" EntityType="Self.TAB_INSTRUCCIONES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TAB_PROFESOR" EntityType="Self.TAB_PROFESOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TAB_RECETAS" EntityType="Self.TAB_RECETAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TAB_ROL" EntityType="Self.TAB_ROL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TAB_TAGS" EntityType="Self.TAB_TAGS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TAB_USER" EntityType="Self.TAB_USER" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__TAB_CURSO__COD_R__5EBF139D" Association="Self.FK__TAB_CURSO__COD_R__5EBF139D">
+      <End Role="TAB_RECETAS" EntitySet="TAB_RECETAS" />
+      <End Role="TAB_CURSOS" EntitySet="TAB_CURSOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_CURSO__ID_ES__60A75C0F" Association="Self.FK__TAB_CURSO__ID_ES__60A75C0F">
+      <End Role="TAB_ESTADO" EntitySet="TAB_ESTADO" />
+      <End Role="TAB_CURSOS" EntitySet="TAB_CURSOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_CURSO__ID_PR__5DCAEF64" Association="Self.FK__TAB_CURSO__ID_PR__5DCAEF64">
+      <End Role="TAB_PROFESOR" EntitySet="TAB_PROFESOR" />
+      <End Role="TAB_CURSOS" EntitySet="TAB_CURSOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_CURSO__ID_US__5FB337D6" Association="Self.FK__TAB_CURSO__ID_US__5FB337D6">
+      <End Role="TAB_USER" EntitySet="TAB_USER" />
+      <End Role="TAB_CURSOS" EntitySet="TAB_CURSOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_INGRE__COD_R__6383C8BA" Association="Self.FK__TAB_INGRE__COD_R__6383C8BA">
+      <End Role="TAB_RECETAS" EntitySet="TAB_RECETAS" />
+      <End Role="TAB_INGREDIENTES" EntitySet="TAB_INGREDIENTES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_INSTR__COD_R__66603565" Association="Self.FK__TAB_INSTR__COD_R__66603565">
+      <End Role="TAB_RECETAS" EntitySet="TAB_RECETAS" />
+      <End Role="TAB_INSTRUCCIONES" EntitySet="TAB_INSTRUCCIONES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_PROFE__ID_RO__5165187F" Association="Self.FK__TAB_PROFE__ID_RO__5165187F">
+      <End Role="TAB_ROL" EntitySet="TAB_ROL" />
+      <End Role="TAB_PROFESOR" EntitySet="TAB_PROFESOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_RECET__ID_CA__5812160E" Association="Self.FK__TAB_RECET__ID_CA__5812160E">
+      <End Role="TAB_CATEGORIAS" EntitySet="TAB_CATEGORIAS" />
+      <End Role="TAB_RECETAS" EntitySet="TAB_RECETAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_RECET__ID_ES__59FA5E80" Association="Self.FK__TAB_RECET__ID_ES__59FA5E80">
+      <End Role="TAB_ESTADO" EntitySet="TAB_ESTADO" />
+      <End Role="TAB_RECETAS" EntitySet="TAB_RECETAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_RECET__ID_TA__59063A47" Association="Self.FK__TAB_RECET__ID_TA__59063A47">
+      <End Role="TAB_TAGS" EntitySet="TAB_TAGS" />
+      <End Role="TAB_RECETAS" EntitySet="TAB_RECETAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_RECET__ID_US__5AEE82B9" Association="Self.FK__TAB_RECET__ID_US__5AEE82B9">
+      <End Role="TAB_USER" EntitySet="TAB_USER" />
+      <End Role="TAB_RECETAS" EntitySet="TAB_RECETAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_USER__ID_EST__5535A963" Association="Self.FK__TAB_USER__ID_EST__5535A963">
+      <End Role="TAB_ESTADO" EntitySet="TAB_ESTADO" />
+      <End Role="TAB_USER" EntitySet="TAB_USER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAB_USER__ID_ROL__5441852A" Association="Self.FK__TAB_USER__ID_ROL__5441852A">
+      <End Role="TAB_ROL" EntitySet="TAB_ROL" />
+      <End Role="TAB_USER" EntitySet="TAB_USER" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

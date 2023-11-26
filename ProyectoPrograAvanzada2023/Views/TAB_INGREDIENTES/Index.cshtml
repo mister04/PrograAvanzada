@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ProyectoPrograAvanzada2023.Models2.TAB_INGREDIENTES>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.INGREDIENTES)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TAB_RECETAS.NOM_RECETA)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.INGREDIENTES)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TAB_RECETAS.NOM_RECETA)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_INGREDIENTES }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_INGREDIENTES }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_INGREDIENTES })
+        </td>
+    </tr>
+}
+
+</table>
